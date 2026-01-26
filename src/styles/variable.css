@@ -1,0 +1,49 @@
+:root{
+  --purple-main: #7c3aed;
+  --purple-2: #a78bfa;
+  --purple-dark: #4c1d95;
+
+  --radius: 16px;
+  --shadow: 0 18px 55px rgba(0,0,0,.35);
+  --blur: blur(14px);
+
+  --container: 1100px;
+
+  /* Gradientes (Dark) */
+  --g1: rgba(124,58,237,.22);
+  --g2: rgba(167,139,250,.14);
+  --g3: rgba(0,0,0,.55);
+
+  /* Gradientes (Light) */
+  --lg1: rgba(124,58,237,.16);
+  --lg2: rgba(167,139,250,.10);
+  --lg3: rgba(255,255,255,.90);
+}
+
+/* Dark Theme (default) */
+body.theme-dark{
+  --bg: #0b0b0f;
+  --text: #f9fafb;
+  --muted: rgba(249,250,251,.72);
+  --card: rgba(255,255,255,.06);
+  --border: rgba(167,139,250,.22);
+  --glow: 0 0 28px rgba(124,58,237,.55);
+
+  --bg-grad-1: var(--g1);
+  --bg-grad-2: var(--g2);
+  --bg-grad-3: var(--g3);
+}
+
+/* Light Theme */
+body.theme-light{
+  --bg: #f6f6fb;
+  --text: #0f1220;
+  --muted: rgba(15,18,32,.72);
+  --card: rgba(255,255,255,.82);
+  --border: rgba(124,58,237,.18);
+  --glow: 0 0 22px rgba(124,58,237,.25);
+
+  --bg-grad-1: var(--lg1);
+  --bg-grad-2: var(--lg2);
+  --bg-grad-3: var(--lg3);
+}
