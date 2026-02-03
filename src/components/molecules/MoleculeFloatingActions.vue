@@ -1,37 +1,32 @@
 <template>
   <div class="floating">
-    <a class="fab wa" :href="whatsUrl" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
-    <button class="fab theme" @click="toggleTheme" aria-label="Alternar tema">
-      {{ theme === 'dark' ? '☾' : '☀' }}
-    </button>
+    <!-- WhatsApp -->
+    <a
+      class="fab wa"
+      :href="whatsUrl"
+      target="_blank"
+      rel="noopener"
+      aria-label="WhatsApp"
+      title="Falar no WhatsApp"
+    >
+      WA
+    </a>
+
+    <!-- Theme Toggle -->
+    <MoleculeThemeToggle />
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { computed } from 'vue'
+import MoleculeThemeToggle from '@molecules/MoleculeThemeToggle.vue'
 
-const theme = ref('dark')
-const KEY = 'mt_theme'
-
-function applyTheme(next){
-  theme.value = next
-  document.body.classList.remove('theme-dark', 'theme-light')
-  document.body.classList.add(next === 'light' ? 'theme-light' : 'theme-dark')
-  localStorage.setItem(KEY, next)
-}
-
-function toggleTheme(){
-  applyTheme(theme.value === 'dark' ? 'light' : 'dark')
-}
-
-onMounted(() => {
-  const saved = localStorage.getItem(KEY)
-  applyTheme(saved || 'dark')
-})
-
-const phone = '5511999999999' // <<< TROQUE AQUI
+const phone = '551194246819' // <<< TROQUE AQUI
 const message = 'Olá! Gostaria de um orçamento para os serviços da M&T.'
-const whatsUrl = computed(() => `https://wa.me/${phone}?text=${encodeURIComponent(message)}`)
+
+const whatsUrl = computed(() =>
+  `https://wa.me/${phone}?text=${encodeURIComponent(message)}`
+)
 </script>
 
 <style scoped>
@@ -41,8 +36,9 @@ const whatsUrl = computed(() => `https://wa.me/${phone}?text=${encodeURIComponen
   left: 16px;
   right: 16px;
   pointer-events: none;
-  z-index: 50;
+  z-index: 60;
 }
+
 .fab{
   pointer-events: auto;
   width: 52px;
@@ -53,11 +49,27 @@ const whatsUrl = computed(() => `https://wa.me/${phone}?text=${encodeURIComponen
   border: 1px solid var(--border);
   background: var(--card);
   box-shadow: var(--shadow);
-  backdrop-filter: var(--blur);
-  transition: transform .2s ease;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: transform .2s ease, box-shadow .2s ease;
   color: var(--text);
+  font-weight: 600;
 }
-.fab:hover{ transform: translateY(-2px); }
-.wa{ position: absolute; left: 0; bottom: 0; }
-.theme{ position: absolute; right: 0; bottom: 0; cursor: pointer; }
+
+.fab:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 18px 45px rgba(0,0,0,.45);
+}
+
+.wa{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.theme{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
 </style>

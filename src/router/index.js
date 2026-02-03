@@ -1,23 +1,35 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-const Home = () => import('@pages/Home.vue')
-const QuemSomos = () => import('@pages/QuemSomos.vue')
-const Servicos = () => import('@pages/Servicos.vue')
-const Contato = () => import('@pages/Contato.vue')
-const Formulario = () => import('@pages/Formulario.vue')
+import Home from '@/components/pages/Home.vue'
+import QuemSomos from '@/components/pages/QuemSomos.vue'
+import Servicos from '@/components/pages/Servicos.vue'
+import Contato from '@/components/pages/Contato.vue'
+import ComoFunciona from '@/components/pages/ComoFunciona.vue'
+import Formulario from '@/components/pages/Formulario.vue'
 
 const routes = [
-  { path: '/', component: Home },
-  { path: '/quem-somos', component: QuemSomos },
-  { path: '/servicos', component: Servicos },
-  { path: '/contato', component: Contato },
-  { path: '/formulario', component: Formulario }
+  { path: '/', name: 'home', component: Home },
+  { path: '/sobre', name: 'sobre', component: QuemSomos },
+  { path: '/servicos', name: 'servicos', component: Servicos },
+  { path: '/como-funciona', name: 'comoFunciona', component: ComoFunciona },
+  { path: '/contato', name: 'contato', component: Contato },
+  { path: '/formulario', name: 'formulario', component: Formulario },
 ]
 
 export default createRouter({
   history: createWebHistory(),
   routes,
-  scrollBehavior() {
-    return { top: 0 }
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) return { ...savedPosition, behavior: 'smooth' }
+
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: 'smooth',
+        top: 92, // offset pro header sticky
+      }
+    }
+
+    return { top: 0, behavior: 'smooth' }
   }
 })

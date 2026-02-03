@@ -1,20 +1,42 @@
-html, body{
-  height: 100%;
+/* base tokens compartilhados */
+:root{
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.70);
+  --border: rgba(255,255,255,.10);
+  --card: rgba(255,255,255,.06);
 }
 
-body{
+/* -------------------------
+   DARK THEME
+------------------------- */
+body.theme-dark{
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.68);
+  --border: rgba(255,255,255,.10);
+  --card: rgba(255,255,255,.06);
+
+  /* fundo do site TODO */
   background:
-    radial-gradient(1200px 600px at 18% 12%, var(--bg-grad-1), transparent 60%),
-    radial-gradient(900px 520px at 82% 22%, var(--bg-grad-2), transparent 62%),
-    radial-gradient(1100px 700px at 50% 115%, var(--bg-grad-3), transparent 62%),
-    linear-gradient(180deg, rgba(0,0,0,.28), transparent 40%),
-    var(--bg);
-
-  color: var(--text);
-  transition: background .25s ease, color .25s ease;
+    radial-gradient(1100px 520px at 14% 10%, rgba(124,58,237,.36), transparent 62%),
+    radial-gradient(900px 520px at 85% 18%, rgba(167,139,250,.22), transparent 60%),
+    radial-gradient(1200px 700px at 50% 110%, rgba(0,0,0,.65), transparent 55%),
+    linear-gradient(180deg, #07030f 0%, #0b0616 45%, #07030f 100%);
+  background-attachment: fixed;
 }
 
-a{
-  color: inherit;
-  text-decoration: none;
+/* -------------------------
+   LIGHT THEME (mas ainda “vivo”)
+------------------------- */
+body.theme-light{
+  --text: rgba(15,18,32,.92);
+  --muted: rgba(15,18,32,.64);
+  --border: rgba(15,18,32,.10);
+  --card: rgba(255,255,255,.75);
+
+  /* fundo do site TODO (não pode ser branco chapado) */
+  background:
+    radial-gradient(1100px 520px at 14% 10%, rgba(124,58,237,.18), transparent 62%),
+    radial-gradient(900px 520px at 85% 18%, rgba(167,139,250,.14), transparent 60%),
+    linear-gradient(180deg, #f7f4ff 0%, #fbfbff 40%, #f6f2ff 100%);
+  background-attachment: fixed;
 }

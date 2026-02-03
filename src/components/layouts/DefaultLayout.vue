@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="appShell">
     <MoleculeHeader />
-    <main class="container section">
+    <main>
       <slot />
     </main>
     <MoleculeFooter />
@@ -14,3 +14,15 @@ import MoleculeHeader from '@molecules/MoleculeHeader.vue'
 import MoleculeFooter from '@molecules/MoleculeFooter.vue'
 import MoleculeFloatingActions from '@molecules/MoleculeFloatingActions.vue'
 </script>
+
+<style scoped>
+.appShell{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main{
+  flex: 1;
+}
+</style>

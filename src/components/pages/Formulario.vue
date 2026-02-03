@@ -1,27 +1,33 @@
 <template>
   <DefaultLayout>
-    <section class="glass sectionPad">
-      <h1 class="h1">Formulário</h1>
-      <p class="p">Envie sua solicitação e retornaremos o mais rápido possível.</p>
+    <section class="page">
+      <div class="container">
+        <div class="glass pageCard stack">
+          <div>
+            <h1 class="h1">Formulário</h1>
+            <p class="p">Envie sua solicitação e retornaremos o mais rápido possível.</p>
+          </div>
 
-      <form class="form" @submit.prevent="submit">
-        <label class="field">
-          <span>Nome</span>
-          <input v-model="form.nome" class="input" placeholder="Seu nome" required />
-        </label>
+          <form class="form" @submit.prevent="submit">
+            <label class="field">
+              <span>Nome</span>
+              <input v-model="form.nome" class="input" placeholder="Seu nome" required />
+            </label>
 
-        <label class="field">
-          <span>E-mail</span>
-          <input v-model="form.email" class="input" type="email" placeholder="seu@email.com" required />
-        </label>
+            <label class="field">
+              <span>E-mail</span>
+              <input v-model="form.email" class="input" type="email" placeholder="seu@email.com" required />
+            </label>
 
-        <label class="field">
-          <span>Mensagem</span>
-          <textarea v-model="form.mensagem" class="textarea" rows="5" placeholder="Conte sobre o que você precisa" required />
-        </label>
+            <label class="field">
+              <span>Mensagem</span>
+              <textarea v-model="form.mensagem" class="textarea" rows="5" placeholder="Conte sobre o que você precisa" required />
+            </label>
 
-        <button class="btn btn--primary" type="submit">Enviar</button>
-      </form>
+            <button class="btn btn--primary submit" type="submit">Enviar</button>
+          </form>
+        </div>
+      </div>
     </section>
   </DefaultLayout>
 </template>
@@ -41,9 +47,18 @@ function submit(){
 </script>
 
 <style scoped>
-.sectionPad{ padding: 22px; }
-.form{ margin-top: 16px; display:grid; gap: 12px; }
-.field{ display:grid; gap: 6px; color: var(--muted); }
+.form{
+  display:grid;
+  gap: 12px;
+  max-width: 760px;
+}
+
+.field{
+  display:grid;
+  gap: 6px;
+  color: var(--muted);
+}
+
 .input, .textarea{
   padding: 12px 12px;
   border-radius: 14px;
@@ -52,8 +67,18 @@ function submit(){
   color: var(--text);
   outline: none;
 }
+
 .input:focus, .textarea:focus{
   border-color: rgba(124,58,237,.55);
   box-shadow: 0 0 0 4px rgba(124,58,237,.12);
+}
+
+.submit{
+  width: fit-content;
+  min-width: 220px;
+}
+
+@media (max-width: 720px){
+  .submit{ width: 100%; }
 }
 </style>
